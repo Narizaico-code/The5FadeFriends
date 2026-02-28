@@ -1,0 +1,33 @@
+{
+  "name": "the5fadefriends",
+  "version": "1.0.0",
+  "description": "Base del proyecto The5FadeFriends para integrar Gemini y Vertex AI",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "test": "echo \"No test runner configurado\" && exit 0"
+  },
+  "keywords": [
+    "gemini",
+    "vertex",
+    "barberia",
+    "the5fadefriends"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "cors": "^2.8.5",
+    "helmet": "^7.2.0",
+    "morgan": "^1.10.0",
+    "mongoose": "^8.6.3",
+    "@google-cloud/vertexai": "^1.10.0",
+    "@google/genai": "^1.43.0",
+    "dotenv": "^17.3.1"
+  }
+}
