@@ -5,6 +5,7 @@ import morgan from "morgan";
 
 import { corsOptions } from "./cors-configuration.js";
 import faceRoutes from "../src/face.routes.js";
+import imageRoutes from "../src/image.routes.js";
 import { notFound, errorHandler } from "../middlewares/errorHandler.js";
 
 const app = express();
@@ -24,6 +25,7 @@ app.get("/health", (_req, res) => {
 });
 
 app.use("/the5fadefriends/api/v1/face", faceRoutes);
+app.use("/the5fadefriends/api/v1/image", imageRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
