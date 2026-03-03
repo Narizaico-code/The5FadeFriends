@@ -1,0 +1,44 @@
+{
+  "info": {
+    "_postman_id": "c5e2f2b7-3f7b-4d0a-9c5b-9a5c2b20b5f1",
+    "name": "The5FadeFriends API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Health",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Analyze Face",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"imageBase64\": \"<pega_base64_aquí>\",\n  \"mimeType\": \"image/jpeg\"\n}\n"
+        },
+        "url": {
+          "raw": "{{base_url}}/the5fadefriends/api/v1/face/analyze",
+          "host": ["{{base_url}}"],
+          "path": ["the5fadefriends", "api", "v1", "face", "analyze"]
+        }
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    { "key": "base_url", "value": "http://localhost:3006" }
+  ]
+}
