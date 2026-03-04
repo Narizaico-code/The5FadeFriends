@@ -24,6 +24,34 @@ app.get("/health", (_req, res) => {
   });
 });
 
+app.get("/list-models", async (_req, res, next) => {
+  try {
+    const { GoogleGenAI } = await import("@google/genai");
+    const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+
+    const result = await ai.models.list();
+    let page = result.page;
+    const models = [];
+
+    while (page.length > 0) {
+      for (const model of page) {
+        if (model.supportedActions?.includes("generateContent")) {
+          models.push({
+            name: model.name,
+            displayName: model.displayName,
+            actions: model.supportedActions,
+          });
+        }
+      }
+      page = result.hasNextPage() ? (await result.nextPage()).page : [];
+    }
+
+    res.json(models);
+  } catch (err) {
+    next(err);
+  }
+});
+
 app.use("/the5fadefriends/api/v1/face", faceRoutes);
 app.use("/the5fadefriends/api/v1/image", imageRoutes);
 
